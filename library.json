@@ -1,18 +1,18 @@
 {
-    "name": "RC Receiver",
-    "keywords": "RC,Receiver,radio",
-    "description": "Reads the PWM signal from RC receivers.",
+    "name": "ESP32_OTA_Debugging",
+    "keywords": "OTA,ESP32,Telnet",
+    "description": "OTA update and Telnet debugging for ESP32",
     "authors":
     {
-        "name": "Nils Lahaye",
-        "email": "nils.lahaye@icloud.com",
-        "url": "https://github.com/Nilon123456789/Receiver.git"
+        "name": "Miro Sieber",
+        "email": "",
+        "url": "https://github.com/Msfjel383/ESP32_OTA_Debugging.git"
     },
-    "version": "1.0.2",
+    "version": "1.0.1",
     "repository":
     {
         "type": "git",
-        "url": "https://github.com/Nilon123456789/Receiver.git"
+        "url": "https://github.com/Msfjel383/ESP32_OTA_Debugging.git"
     },
     "export":
     {
