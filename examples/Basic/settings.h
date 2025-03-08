@@ -9,11 +9,14 @@
  * DEBUG = 2: Gibt Fehler und Informationen aus.
  * DEBUG = 3: Gibt Fehler, Informationen und Testnachrichten aus.
 */
+
+//folgende funktionen können durch auskommentieren deaktiviert werden.
+
 #define DEBUG 0
-//#define SERIELL         //serielle komunikation deaktivieren
-//#define BAUDRATE 115200
+#define SERIELL         //serielle komunikation deaktivieren
+#define BAUDRATE 115200
 #define OTA             //OTA nicht deaktivieren!
-//#define TELNET          //nur telnet deaktivieren
+#define TELNET          //nur telnet deaktivieren
 
 
 #endif // SETTINGS_H
