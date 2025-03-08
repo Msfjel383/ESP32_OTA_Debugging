@@ -4,11 +4,12 @@
 const char *hostName = "My_Device";
 const char *ssid = "my_ssid";
 const char *password = "my_password";
+const char *OTApassword = "my_ota_password";
 
 void setup() {
   debugSettings(3, 1, 115200, 1, 1);
   setupDebug();
-  setupOTA(hostName, ssid, password);
+  setupOTA(hostName, ssid, password, OTApassword);
 
     // Your setup code
 

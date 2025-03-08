@@ -21,7 +21,7 @@
 
 // Function prototypes
 void otaSettings (bool set_OTA, bool set_Telnet);
-void setupOTA (const char* nameprefix, const char* ssid, const char* password);
+void setupOTA (const char* nameprefix, const char* ssid, const char* password, const char* OTApassword);
 void ota_handle (void * parameter);
 
 extern bool o_OTA;

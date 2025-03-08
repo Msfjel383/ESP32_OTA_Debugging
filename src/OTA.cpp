@@ -17,7 +17,7 @@ void otaSettings (bool set_OTA, bool set_Telnet){
   o_Telnet = set_Telnet;
 }
 // Setup OTA Function
-void setupOTA(const char* nameprefix, const char* ssid, const char* password) {
+void setupOTA(const char* nameprefix, const char* ssid, const char* password, const char* OTApassword) {
   if (o_OTA){
   // Configure the hostname
   uint16_t maxlen = strlen(nameprefix) + 7;
@@ -41,7 +41,7 @@ void setupOTA(const char* nameprefix, const char* ssid, const char* password) {
 
   // Optional configurations
   // ArduinoOTA.setPort(3232); // Uncomment for a custom port
-   ArduinoOTA.setPassword("papiadmin"); // Uncomment to set password
+   ArduinoOTA.setPassword(OTApassword); // Uncomment to set password
 
   ArduinoOTA.onStart([]() {
     String type;
