@@ -1,13 +1,24 @@
 #include "OTA.h"
 
-#ifndef OTA
-void setupOTA(const char* nameprefix, const char* ssid, const char* password){};
+bool o_OTA = true;
+bool o_Telnet = true;
+
+#if defined(ESP32_RTOS) && defined(ESP32)
+void ota_handle( void * parameter ) {
+  for (;;) {
+    ArduinoOTA.handle();
+    delay(3500);
+  }
+}
 #endif
 
-#ifdef OTA
-
+void otaSettings (bool set_OTA, bool set_Telnet){
+  o_OTA = set_OTA;
+  o_Telnet = set_Telnet;
+}
 // Setup OTA Function
 void setupOTA(const char* nameprefix, const char* ssid, const char* password) {
+  if (o_OTA){
   // Configure the hostname
   uint16_t maxlen = strlen(nameprefix) + 7;
   char* fullhostname = new char[maxlen];
@@ -71,11 +82,21 @@ void setupOTA(const char* nameprefix, const char* ssid, const char* password) {
   });
 
   ArduinoOTA.begin();
-  #ifdef TELNET
+  if(o_Telnet){
   TelnetStream.begin();
-  #endif
+  }
 
   debuglnInfo("OTA Initialized");
   debuglnInfo("IP address: " + WiFi.localIP().toString());
+  
+  #if defined(ESP32_RTOS) && defined(ESP32)
+  xTaskCreate(
+    ota_handle,          /* Task function. */
+    "OTA_HANDLE",        /* String with name of task. */
+    10000,            /* Stack size in bytes. */
+    NULL,             /* Parameter passed as input of the task */
+    1,                /* Priority of the task. */
+    NULL);            /* Task handle. */
+  #endif
 }
-#endif
+}
